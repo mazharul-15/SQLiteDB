@@ -37,7 +37,7 @@ public class Register_Field extends AppCompatActivity {
     public void userRegistration(View view) {
 
         /// getting data from activity_register_field.xml
-        user_email = name.getText().toString();
+        user_name = name.getText().toString();
         user_email = email.getText().toString();
         user_phone = phone.getText().toString();
         user_password = password.getText().toString();
@@ -46,9 +46,9 @@ public class Register_Field extends AppCompatActivity {
         SQLiteHelper userDetails = new SQLiteHelper(getApplicationContext());
 
         /// inserting user details into SQLite DB through the object( userDetail) of SQLiteHelper.java
-        boolean checking = userDetails.inserUserData();
+        boolean registrationStatus = userDetails.userRegistrationDataInsert(user_name, user_email, user_phone, user_password);
 
-        if(checking == false) {
+        if(registrationStatus == false) {
 
             Toast.makeText(getApplicationContext(), "User Registration failed", Toast.LENGTH_LONG).show();
         }else {
