@@ -20,13 +20,15 @@ public class MainActivity extends AppCompatActivity {
         loginBtn = findViewById(R.id.login_btn);
         registerBtn = findViewById(R.id.register_btn);
 
+        /// moving to login feature
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ));
+                startActivity(new Intent(getApplicationContext(), LogIn.class));
             }
         });
 
+        /// moving to register feature
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

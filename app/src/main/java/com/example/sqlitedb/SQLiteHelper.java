@@ -7,17 +7,28 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class SQLiteHelper extends SQLiteOpenHelper {
-    public SQLiteHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+
+    private static final String DATABASE = "SQLiteDB";
+    private static final int VERSION = 1;
+
+    public SQLiteHelper(@Nullable Context context) {
+        super(context, DATABASE, null, VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+        String createTableQuery = "CREATE TABLE userDetails(id PRIMARY KEY AUTOINCREMENT," +
+                                                            "name TEXT, " +
+                                                            "email TEXT, " +
+                                                            "phone TEXT, " +
+                                                            "password TEXT)";
+        db.execSQL(createTableQuery);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL("DROP TABLE IF EXISTS userDetails");
+        onCreate(db);
     }
+
 }
