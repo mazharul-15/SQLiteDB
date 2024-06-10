@@ -2,6 +2,7 @@ package com.example.sqlitedb;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -49,5 +50,13 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
         if(status > 0) registrationStatus = true;
         return registrationStatus;
+    }
+
+    public Cursor userLogInData(String email, String password) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = "SELECT * FROM userDetails WHERE email = '"+email+"' AND password = '"+password+"'";
+        Cursor cursor = db.rawQuery(sql, null);
+
+        return cursor;
     }
 }
