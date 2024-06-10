@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class LogIn extends AppCompatActivity {
 
     EditText user_email, user_password;
@@ -32,13 +34,15 @@ public class LogIn extends AppCompatActivity {
                 String password = user_password.getText().toString();
 
                 SQLiteHelper userLogIn = new SQLiteHelper(getApplicationContext());
-                Cursor cursor = userLogIn.userLogInData(email, password);
+
+                int userId = userLogIn.userAuthencation(email, password);
 
                 // checking valid user or not
-                if(cursor.moveToFirst()) {
+                if(userId > -1) {
 
                     Intent intent = new Intent(getApplicationContext(), UserDetails.class);
-
+                    intent.putExtra("id", userId);
+                    startActivity(intent);
 
                 }else {
 

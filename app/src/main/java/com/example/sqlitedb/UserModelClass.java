@@ -3,7 +3,7 @@ package com.example.sqlitedb;
 public class UserModelClass {
 
     private int id;
-    private String name, email, password;
+    private String name, email, phone, password;
 
     //constructor
     UserModelClass() {}
@@ -38,5 +38,13 @@ public class UserModelClass {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

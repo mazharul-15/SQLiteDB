@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 public class SQLiteHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE = "SQLiteDB";
@@ -52,11 +54,64 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         return registrationStatus;
     }
 
-    public Cursor userLogInData(String email, String password) {
+    /// user authentication
+    public int userAuthencation(String email, String password) {
+
+        int userId = -1;
         SQLiteDatabase db = this.getReadableDatabase();
-        String sql = "SELECT * FROM userDetails WHERE email = '"+email+"' AND password = '"+password+"'";
+        String sql = "SELECT * FROM userDetails WHERE email = '" +email+ "'password = '" +password+ "'";
         Cursor cursor = db.rawQuery(sql, null);
 
-        return cursor;
+        try {
+            if(cursor.moveToFirst()){
+                userId = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
+            }
+
+        }finally {
+            cursor.close();
+        }
+
+        return userId;
+    }
+
+    /// user details
+    public ArrayList<UserModelClass> userLogInData(int userId) {
+
+        ArrayList<UserModelClass> userData = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String sql = "SELECT * FROM userDetails WHERE id = '" + userId +"'";
+        Cursor cursor = db.rawQuery(sql, null);
+
+        try {
+            if(cursor.moveToFirst()) {
+                do {
+                    // retrieving data from cursor into variables
+                    int id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
+                    String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+                    String loginEmail = cursor.getString(cursor.getColumnIndexOrThrow("email"));
+                    String phone = cursor.getString(cursor.getColumnIndexOrThrow("phone"));
+                    String loginPassword = cursor.getString(cursor.getColumnIndexOrThrow("password"));
+
+                    // set data to object of UserModelClass
+                    UserModelClass logInData = new UserModelClass();
+                    logInData.setId(id);
+                    logInData.setName(name);
+                    logInData.setEmail(loginEmail);
+                    logInData.setPhone(phone);
+                    logInData.setPassword(loginPassword);
+
+                    // add data to arrayList
+                    userData.add(logInData);
+
+                }while(cursor.moveToNext());
+            }
+
+        }finally {
+
+            cursor.close();
+        }
+
+        return userData;
     }
 }
