@@ -59,7 +59,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
         int userId = -1;
         SQLiteDatabase db = this.getReadableDatabase();
-        String sql = "SELECT * FROM userDetails WHERE email = '" +email+ "'password = '" +password+ "'";
+        String sql = "SELECT * FROM userDetails WHERE email = '" +email+ "' AND password = '" +password+ "'";
         Cursor cursor = db.rawQuery(sql, null);
 
         try {
