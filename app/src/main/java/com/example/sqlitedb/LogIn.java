@@ -37,7 +37,9 @@ public class LogIn extends AppCompatActivity {
                 // checking valid user or not
                 if(cursor.moveToFirst()) {
 
-                    Intent intent = new Intent(this, );
+                    Intent intent = new Intent(getApplicationContext(), UserDetails.class);
+
+
                 }else {
 
                     Toast.makeText(LogIn.this, "Invalid User email or Password", Toast.LENGTH_SHORT).show();
