@@ -1,6 +1,8 @@
 package com.example.sqlitedb;
 
-public class UserModelClass {
+import java.io.Serializable;
+
+public class UserModelClass implements Serializable {
 
     private int id;
     private String name, email, phone, password;

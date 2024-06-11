@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".UserDetailsUpdate">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/user_details_update_title"
+        android:text="User Data Update"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_above="@+id/user_details_section_for_update"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/user_details_section_for_update"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="40dp"
+        android:padding="20dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/name_update"
+            android:textSize="25sp"
+            android:hint="update your name"
+            android:textAlignment="center"
+            android:textColor="@color/font_color"
+            android:layout_marginBottom="15dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/email_update"
+            android:textSize="25sp"
+            android:hint="update your email"
+            android:textAlignment="center"
+            android:textColor="@color/font_color"
+            android:layout_marginBottom="15dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/phone_update"
+            android:textSize="25sp"
+            android:hint="update your phone"
+            android:textAlignment="center"
+            android:textColor="@color/font_color"
+            android:layout_marginBottom="15dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/password_update"
+            android:textSize="25sp"
+            android:hint="update your password"
+            android:textAlignment="center"
+            android:textColor="@color/font_color"/>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/update_data"
+        android:text="update"
+        android:textSize="20dp"
+        android:textColor="@color/font_altr"
+        android:backgroundTint="@color/primary_color"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/user_details_section_for_update"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>
