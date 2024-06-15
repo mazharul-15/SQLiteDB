@@ -114,4 +114,27 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
         return userData;
     }
+
+    // Update user data
+    boolean updateUserData(UserModelClass userData) {
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put("name", userData.getName());
+        values.put("email", userData.getEmail());
+        values.put("phone", userData.getPhone());
+        values.put("password", userData.getPassword());
+
+        int id = userData.getId();
+
+        int status = db.update("userDetails", values, "id=?", new String[]{String.valueOf(id)});
+
+        if(status > 0) {
+            return true;
+        }else {
+            return false;
+        }
+    }
 }
